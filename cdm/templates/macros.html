@@ -1,0 +1,80 @@
+% macro render_field(field, placeholder=None, rows=None, style=None)
+  <div class="form-group {% if field.errors %}has-error has-feedback{% endif %}{% if placeholder %} with-placeholder{% endif %}">
+    {{ field.label(class="control-label") }}
+    % if placeholder
+      {{ field(class=style, placeholder=placeholder, rows=rows) }}
+    % else
+      {{ field(class=style, rows=rows) }}
+    % endif
+    % if field.errors
+      <ul class="errors">
+      % for error in field.errors
+        <li>
+          <i class="fa fa-times form-feedback"></i>
+          <span style="color: red;"> {{ error }}</span>
+        </li>
+      % endfor
+      </ul>
+    % else
+      <p class="help-block">{{ field.description }}</p>
+    % endif
+  </div>
+% endmacro
+
+% macro render_error()
+  % with messages = get_flashed_messages(with_categories=true)
+    % if messages
+      % for category, message in messages
+      <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+      % endfor
+    % endif
+  % endwith
+% endmacro
+
+% macro render_checkbox_field(field, placeholder=None, rows=None, name='')
+  <div class="form-group {% if field.errors %}has-error has-feedback{% endif %}{% if placeholder %} with-placeholder{% endif %}">
+    {{ field.label(class="control-label") }}
+    <div class="well" style="max-height: 300px;overflow: auto;">
+      {# <ul class="list-group checked-list-box"> #}
+      <ul>
+      % for f in field
+        {# <li class="list-group-item" style="cursor: pointer;"> #}
+                <li style="cursor: pointer;">
+
+          <span class="state-icon glyphicon glyphicon-unchecked"></span>
+          <label for="labels-2">{{ f.label }}</label>
+          {# <input type="checkbox" class="hidden" name={{ name }}> #}
+          <input type="checkbox" name={{ name }}>
+        </li>
+      % endfor
+      </ul>
+      % if field.errors
+        <ul class="errors">
+        % for error in field.errors
+          <li>
+            <i class="fa fa-times form-feedback"></i>
+            <span style="color: red;"> {{ error }}</span>
+          </li>
+        % endfor
+        </ul>
+      % else
+        <p class="help-block">{{ field.description }}</p>
+      % endif
+    </div>
+  </div>
+% endmacro
+
+% macro checkbox_with_errors(field, checked=False)
+  <div class="form-group {% if field.errors %}has-error{% endif %}">
+    <label class="checkbox-inline">
+      {{ field(class="checkbox", checked=checked) }} {{ field.label }}
+    </label>
+    % if field.errors
+      % for err in field.errors
+        <p class="help-block">{{ err|safe }}</p>
+      % endfor
+    % else
+      <p class="help-block">{{ field.description }}</p>
+    % endif
+  </div>
+% endmacro

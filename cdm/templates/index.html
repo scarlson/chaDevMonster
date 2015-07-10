@@ -1,0 +1,25 @@
+% extends "base.html"
+% block content
+% from "macros.html" import render_field, render_checkbox_field, checkbox_with_errors
+
+  <div>
+    <h3>Submit interesting articles to be posted on <a href="https://www.reddit.com/r/chadev/">Chadev's subreddit</a><br>
+    <small>
+      Submissions are pulled and posted once a day
+    </small>
+    </h3>
+    <br>
+  </div>
+
+  <form action="" method="post" name="issueform">
+    {{ form.hidden_tag() }}
+    {{ render_field(form.title, 'Title', style='mui-form-control') }}
+    {{ render_field(form.link, 'Link', style='mui-form-control') }}
+    <br>
+    <div>
+      <button type="submit" id="submit-form" class="mui-btn mui-btn-primary mui-btn-raised">
+        Submit
+      </button>
+    </div>
+  </form>
+% endblock

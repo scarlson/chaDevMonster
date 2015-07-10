@@ -1,0 +1,25 @@
+% extends "base.html"
+% block content
+  % if queue
+  <h3>The following links are in queue for submission to /r/chadev</h3>
+
+    <table class="mui-table mui-table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        % for item in queue
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.link }}</td>
+        </tr>
+        % endfor
+       </tbody>
+    </table>
+  % endif
+% endblock

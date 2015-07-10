@@ -1,0 +1,96 @@
+% from "macros.html" import render_error
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//cdn.muicss.com/mui-0.1.18/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.1.18/js/mui.min.js"></script>
+    <style type="text/css">
+      body{
+        background-color: #535456;
+        color: #929397;
+      }
+      .header{
+        background-color: #FFFFFF;
+        margin-bottom: 20px;
+        height: 64px;
+        padding-top: 5px;
+      }
+      #footer{
+        background-color: #535456;
+      }
+      footer li a{
+        color: #929397;
+      }
+      #container{
+        min-height: 100%;
+      }
+      #logo{
+
+      }
+
+      /* Sticky footer styles
+      -------------------------------------------------- */
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -125px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 125px;
+        color: white;
+        padding-top: 30px;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <header class="mui-appbar header">
+        <div class="mui-container" id="logo">
+          <a href="{{ url_for("general.index") }}"><img src="{{ url_for('static', filename='images/logo.svg') }}"/></a>
+        </div>
+      </header>
+      <div class="mui-container">
+        <div class="mui-panel">
+          {{ render_error() }}
+          % block content
+          % endblock
+        </div>
+      </div>
+      <div id="push"></div>
+    </div>
+    <footer id="footer">
+      <hr>
+      <div class="mui-container">
+        <ul class="mui-list-inline">
+          <li><a href="{{ url_for("general.about") }}">About</a></li>
+          <li><a href="{{ url_for("general.queue") }}">Queue</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
