@@ -8,16 +8,15 @@ from cdm.views import general
 from cdm import models, db
 from cdm import app
 
+
 migrate = Migrate(app, db)
 manager = Manager(app)
-
 
 def _make_context():
     return dict(app=app, db=db, models=models)
 
 manager.add_command("shell", Shell(make_context=_make_context, use_ipython=True))
 manager.add_command('db', MigrateCommand)
-
 
 port = int(os.environ.get("PORT", 5000))
 manager.add_command("runserver", Server(
