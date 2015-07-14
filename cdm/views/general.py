@@ -65,10 +65,8 @@ def reddit_callback():
         return "Error: " + error
     state = request.args.get('state', '')
     if not is_valid_state(state):
-        # Uh-oh, this request wasn't started by us!
         abort(403)
     code = request.args.get('code')
-    # We'll change this next line in just a moment
     return "got a code! %s" % code
 
 @mod.route("/payload", methods=['POST'])
