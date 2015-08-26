@@ -16,6 +16,7 @@ anyjson==0.3.3
 argparse==1.2.1
 arrow==0.5.4
 billiard==3.3.0.20
+celery==3.1.18
 ipdb==0.8
 ipython==3.1.0
 itsdangerous==0.24
