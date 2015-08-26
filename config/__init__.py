@@ -21,7 +21,10 @@ else:
 
 
 try:
-    any([config.APP_SECRET_KEY]) is None
+    config_vars = [config.APP_SECRET_KEY, config.DATABASE_URI,
+                   config.CLIENT_ID, config.CLIENT_SECRET,
+                   config.REDDIT_USERNAME, config.REDDIT_PASSWORD]
+    any(config_vars) is None
 except Exception, e:
     missing_var = e.message.split()[-1]
     raise ConfigVarNotFoundError(missing_var)
