@@ -19,7 +19,7 @@ else:
     config.APP_SECRET_KEY = os.environ.get('SECRET_KEY')
     config.DEBUG = False
     config.DATABASE_URI = os.environ.get('DATABASE_URI')
-
+    config.CLIENT_ID = os.environ.get('CLIENT_ID')
 
 try:
     config_vars = [config.APP_SECRET_KEY, config.DATABASE_URI,
