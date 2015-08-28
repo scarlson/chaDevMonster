@@ -18,6 +18,7 @@ else:
     # production server environment variables
     config.APP_SECRET_KEY = os.environ.get('SECRET_KEY')
     config.DEBUG = False
+    config.DATABASE_URI = os.environ.get('DATABASE_URI')
 
 
 try:
