@@ -3,11 +3,12 @@
 from sqlalchemy_utils import ArrowType
 from sqlalchemy import Column, Integer, String, Boolean
 from cdm import db
+from cdm.models import ModelMixin
 
 __all__ = ('Repo',)
 
 
-class Submission(db.Model):
+class Submission(db.Model, ModelMixin):
     __tablename__ = 'submission'
 
     id = Column(Integer, primary_key=True)
