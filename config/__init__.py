@@ -16,9 +16,10 @@ if os.environ.get('ENVIRONMENT') == 'dev':
         raise EnvironmentError('Please create config/dev.py')
 else:
     # production server environment variables
+    basedir = os.path.abspath(os.path.join(os.path.dirname( __file__ ), os.pardir))
     config.APP_SECRET_KEY = os.environ.get('APP_SECRET_KEY')
     config.DEBUG = False
-    config.DATABASE_URI = os.environ.get('DATABASE_URI')
+    config.DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.db')
     config.CLIENT_ID = os.environ.get('CLIENT_ID')
     config.PORT = os.environ.get('PORT')
     config.CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
