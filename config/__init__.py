@@ -20,6 +20,11 @@ else:
     config.DEBUG = False
     config.DATABASE_URI = os.environ.get('DATABASE_URI')
     config.CLIENT_ID = os.environ.get('CLIENT_ID')
+    config.PORT = os.environ.get('PORT')
+    config.CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
+    config.REDDIT_USERNAME = os.environ.get('REDDIT_USERNAME')
+    config.REDDIT_PASSWORD = os.environ.get('REDDIT_PASSWORD')
+
 
 try:
     config_vars = [config.APP_SECRET_KEY, config.DATABASE_URI,
