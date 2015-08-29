@@ -16,7 +16,7 @@ if os.environ.get('ENVIRONMENT') == 'dev':
         raise EnvironmentError('Please create config/dev.py')
 else:
     # production server environment variables
-    config.APP_SECRET_KEY = os.environ.get('SECRET_KEY')
+    config.APP_SECRET_KEY = os.environ.get('APP_SECRET_KEY')
     config.DEBUG = False
     config.DATABASE_URI = os.environ.get('DATABASE_URI')
     config.CLIENT_ID = os.environ.get('CLIENT_ID')
