@@ -10,4 +10,4 @@ This application was made in an effort to keep fresh content on the Chadev subre
 [install.md](/docs/install.md)
 
 ### URL
-http://ec2-52-5-186-21.compute-1.amazonaws.com/
+http://162.243.185.122/
