@@ -41,8 +41,6 @@ def submit_link():
         query.submitted = True
         db.session.add(query)
         db.session.commit()
-        headers = {'X-StewardToken': '24cd083c2f6a82d7ac4e3a92c55018ec'}
-        requests.get('https://steward.io/j/o3w02vA/end', headers=headers)
 
 
 @manager.command
