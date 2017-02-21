@@ -16,11 +16,14 @@ class Submission(db.Model, ModelMixin):
     link = Column(String(200))
     created_on = Column(ArrowType)
     submitted = Column(Boolean, default=False)
+    submitted_by = Column(String(200))
 
-    def __init__(self, title, link, created_on):
+
+    def __init__(self, title, submitted_by, link, created_on):
         self.title = title
         self.created_on = created_on
         self.link = link
+        self.submitted_by = submitted_by
 
     def __repr__(self):
         return self.title

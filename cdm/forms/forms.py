@@ -8,3 +8,4 @@ class RedditPostForm(Form):
 
     title = TextField(label=u'Title', validators=[InputRequired()])
     link = TextField(label=u'Link', validators=[InputRequired()])
+    submitted_by = TextField(label=u'Submitted By', validators=[InputRequired()])

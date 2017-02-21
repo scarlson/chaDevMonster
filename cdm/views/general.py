@@ -32,11 +32,12 @@ def index():
     if form.validate_on_submit():
         title = form.title.data
         link = form.link.data
+        submitted_by = form.submitted_by.data
         if link_in_db(link):
             flash(
                 u'This link has already been submitted, please submit another', 'danger')
             return render_template('index.html', form=form)
-        save_to_db(title, link)
+        save_to_db(title, link, submitted_by)
         flash(u'Your information has been submitted and will be posted to reddit soon. Thank you.', 'success')
         return render_template('success.html')
 
@@ -108,12 +109,12 @@ def link_in_db(link):
     return False
 
 
-def save_to_db(title, link):
+def save_to_db(title, link, submitted_by):
     """Save title and link to db if it doesn't already exists."""
 
     utc = arrow.utcnow()
     est = utc.to('US/Eastern')
-    submission = Submission(title=title, link=link, created_on=est)
+    submission = Submission(title=title, link=link, submitted_by=submitted_by, created_on=est)
     db.session.add(submission)
     db.session.commit()
 
