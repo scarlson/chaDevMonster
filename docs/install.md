@@ -1,1 +1,1 @@
-# Installation Insructions
+# Installation Instructions
